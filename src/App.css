@@ -1,0 +1,125 @@
+body {
+  background: linear-gradient(136deg, #6a11cb, #2575fc);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.bodyDark {
+  background-color: #2a2929;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  width: 188px;
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.box::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #00ffcc,#ff00cc);
+  background-size: 600% 600%;
+  animation: gradient 6s ease infinite;
+  z-index: -1;
+  mask-image: radial-gradient(#fff, #fff);
+}
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.box:hover {
+  transform: scale(1.05);
+  transition: 0.1s ease-in;
+}
+.phone {
+  position: relative;
+  top: 15px;
+  border-radius: 12px;
+}
+.shopbutton {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  left: 70px;
+  bottom: 10px;
+  outline: none;
+  background-color: gold;
+  border: 1px solid gold;
+  border-radius: 12px;
+  transition: 0.1s ease-in;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.shopbutton:hover {
+  background-color: rgb(188, 163, 21);
+}
+
+/* input styles  */
+.cont {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boxRemove {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: right;
+}
+.removebox {
+border-radius: 8px;
+}
+
+.boxbtn {
+  display: flex;
+  align-items: end;
+  position: relative;
+  right: 40px;
+  bottom: 20px;
+}
+#min {
+  outline: none;
+  border: 1px solid white;
+  border-radius: 12px;
+  width: 30px;
+}
+#max {
+  outline: none;
+  border: 1px solid white;
+  border-radius: 12px;
+  width: 30px;
+}
+
+.product {
+  font-size: 27px;
+  font-weight: 600;
+}
+.model {
+  font-size: 23px;
+  font-weight: 600;
+}
+.price {
+  font-size: 23px;
+  font-weight: 600;
+}
