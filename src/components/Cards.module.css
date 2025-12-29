@@ -1,0 +1,14 @@
+.boxNav {
+    display: flex;
+    justify-content: center;
+}
+.isactive {
+    font-size: 2rem;
+    color: white;
+    background-color: purple;
+}
+.notactive {
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(241, 19, 142);
+}
