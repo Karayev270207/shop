@@ -2,9 +2,10 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./components/Home";
 import Cards from "./components/Cards";
 import Cart from "./components/Cart";
-import Card from "./components/card";
+import Card from "./components/Card";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
+
 const App = () => {
   return (
     <>

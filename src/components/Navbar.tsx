@@ -1,8 +1,28 @@
-import { NavLink } from "react-router-dom";
-import { useLogin, type TypeState } from "../context/loginContext";
+import { NavLink, useNavigate } from "react-router-dom";
+import { InputCreate} from "../context/loginContext";
 import "./Cards.module.css";
+import { useEffect, useState } from "react";
+import { apiCreateEffect } from "../context/apiContext";
+
 const Navbar = () => {
-  const { users, logout } = useLogin() as TypeState;
+  const cart = apiCreateEffect((state) => state.cart);
+  const [len, setLen] = useState<string>("");
+  // zustand states 
+  const users = InputCreate((state)=>state.users);
+  const logout = InputCreate((state)=>state.logout);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (users) {
+      navigate("/");
+    }
+  }, [users]);
+
+  useEffect(() => {
+    const cartLen = cart.length;
+    if (cartLen > 0) {
+      setLen(`(${cartLen})`);
+    }
+  }, [cart]);
   return (
     <>
       <div className="boxNav">
@@ -18,24 +38,36 @@ const Navbar = () => {
         >
           Cards
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? "isactive" : "notactive")}
-          to={"/cart"}
-        >
-          Cart
-        </NavLink>
-        {users ? (
-          <>
-            <button onClick={() => logout()}>logout</button>
-          </>
-        ) : (
+        {users !== null && (
           <NavLink
             className={({ isActive }) => (isActive ? "isactive" : "notactive")}
-            to={"/login"}
+            to={"/cart"}
           >
-            Login
+            Cart {len}
           </NavLink>
         )}
+        <>
+          {users !== null ? (
+            <button
+              className="notactive"
+              onClick={() => {
+                logout();
+                navigate("/login");
+              }}
+            >
+              logout
+            </button>
+          ) : (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "isactive" : "notactive"
+              }
+              to={"/login"}
+            >
+              Login
+            </NavLink>
+          )}
+        </>
       </div>
     </>
   );

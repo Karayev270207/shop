@@ -1,7 +1,3 @@
-body {
-  background: linear-gradient(136deg, #6a11cb, #2575fc);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
 .bodyDark {
   background-color: #2a2929;
 }
@@ -36,16 +32,22 @@ body {
   bottom: -2px;
   border-radius: 18px;
   padding: 2px;
-  background: linear-gradient(270deg, #ff00cc, #3333ff, #00ffcc,#ff00cc);
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #00ffcc, #ff00cc);
   background-size: 600% 600%;
   animation: gradient 6s ease infinite;
   z-index: -1;
   mask-image: radial-gradient(#fff, #fff);
 }
 @keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .box:hover {
   transform: scale(1.05);
@@ -88,7 +90,7 @@ body {
   justify-content: right;
 }
 .removebox {
-border-radius: 8px;
+  border-radius: 8px;
 }
 
 .boxbtn {
@@ -122,4 +124,44 @@ border-radius: 8px;
 .price {
   font-size: 23px;
   font-weight: 600;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.minus {
+  border-radius: 12px;
+  width: 50px;
+  height: 30px;
+}
+.add {
+  border-radius: 12px;
+  width: 50px;
+  height: 30px;
+}
+
+.isactive {
+  background-color: bisque;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  border: 1px solid grey;
+  text-decoration: none;
+}
+.notactive {
+  background-color: white;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  border: 1px solid grey;
+  text-decoration: none;
 }

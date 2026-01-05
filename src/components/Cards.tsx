@@ -125,11 +125,47 @@
 // }
 
 // export default Cards;
-const Cards = () => {
+
+import { apiCreateEffect } from "../context/apiContext";
+import { InputCreate } from "../context/loginContext";
+import "../App.css";
+import { useNavigate } from "react-router-dom";
+import buy from "../icons/shopping-cart_3916627.png";
+
+const Cards: React.FC = () => {
+  const addToCart = apiCreateEffect((state) => state.addToCart);
+  const products = apiCreateEffect((state) => state.products);
+  const loading = apiCreateEffect((state) => state.loading);
+  const users = InputCreate((state)=>state.users);
+  const navigate = useNavigate();
+
+  if (loading) return <div>Loading...</div>;
   return (
     <>
-    <h1>Cards</h1>
+      <div className="container">
+        {products.map((p) => {
+          return (
+            <div className="box" key={p.id}>
+              <div>{p.id}</div>
+              <div>{p.name}</div>
+              <div>{p.model}</div>
+              <div>{p.year}</div>
+              <div>{p.price}</div>
+              <button
+                className="shopbutton"
+                onClick={() => {
+                  if (users) {
+                    addToCart(p);
+                  } else navigate("/login");
+                }}
+              >
+                <img src={buy} width={27} alt="" />
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </>
-  )
-}
+  );
+};
 export default Cards;

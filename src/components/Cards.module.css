@@ -1,14 +1,19 @@
+body {
+  background: linear-gradient(to rught, #6a11cb, #2575fc,#6a11cb, #2575fc);
+  height: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 .boxNav {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .isactive {
-    font-size: 2rem;
-    color: white;
-    background-color: purple;
+  font-size: 2rem;
+  color: white;
+  background-color: purple;
 }
 .notactive {
-    font-size: 2rem;
-    color: white;
-    background-color: rgb(241, 19, 142);
+  font-size: 2rem;
+  color: white;
+  background-color: rgb(241, 19, 142);
 }

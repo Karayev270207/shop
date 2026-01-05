@@ -1,0 +1,99 @@
+.suma {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  width: 300pxpx;
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.suma::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(270deg, #ff00cc, gold, orange, #ff00cc);
+  background-size: 600% 600%;
+  animation: gradient 6s ease infinite;
+  z-index: -1;
+  mask-image: radial-gradient(#fff, #fff);
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.suma:hover {
+  transform: scale(1.05);
+  transition: 0.1s ease-in;
+}
+.boxcross {
+    position: relative;
+    left: 150px;
+}
+
+.containerCart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.boxCart {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  gap: 15px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  width: 350px;
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.boxCart::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(270deg, #ff00cc, gold, orange, yellow);
+  background-size: 600% 600%;
+  animation: gradient 6s ease infinite;
+  z-index: -1;
+  mask-image: radial-gradient(#fff, #fff);
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
