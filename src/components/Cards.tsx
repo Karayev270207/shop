@@ -126,31 +126,39 @@
 
 // export default Cards;
 
-import { apiCreateEffect } from "../context/apiContext";
+import { apiCreateEffect, type Product } from "../context/apiContext";
 import { InputCreate } from "../context/loginContext";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import buy from "../icons/shopping-cart_3916627.png";
+import network from "../icons/wifi_1436985.png";
 
 const Cards: React.FC = () => {
   const addToCart = apiCreateEffect((state) => state.addToCart);
   const products = apiCreateEffect((state) => state.products);
+  const isError = apiCreateEffect((state) => state.isError);
   const loading = apiCreateEffect((state) => state.loading);
-  const users = InputCreate((state)=>state.users);
+  const users = InputCreate((state) => state.users);
   const navigate = useNavigate();
-
-  if (loading) return <div>Loading...</div>;
+  const openImage = (p: Product): string => {
+    return p.image
+      ? p.image.startsWith("data:")
+        ? p.image
+        : "/images/" + p.image
+      : "/images/comment-alt-dots_9821486.png";
+  };
   return (
-    <>
+    <div className="bodyCards">
       <div className="container">
         {products.map((p) => {
           return (
-            <div className="box" key={p.id}>
+            <Link to={`/cards/${p.id}`} className="box" key={p.id}>
               <div>{p.id}</div>
+              <img src={openImage(p)} width={170} alt="" />
               <div>{p.name}</div>
               <div>{p.model}</div>
               <div>{p.year}</div>
-              <div>{p.price}</div>
+              <div>{p.price} TMT</div>
               <button
                 className="shopbutton"
                 onClick={() => {
@@ -161,11 +169,40 @@ const Cards: React.FC = () => {
               >
                 <img src={buy} width={27} alt="" />
               </button>
-            </div>
+            </Link>
           );
         })}
       </div>
-    </>
+      {loading && (
+        <h1>Loading</h1>
+      )}
+      {isError && (
+        <>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 20,
+              padding: 10,
+            }}
+          >
+            <img src={network} width={100} alt="" />
+            <div
+              style={{
+                backgroundColor: "white",
+                color: "red",
+                fontSize: 36,
+                borderRadius: 12,
+              }}
+            >
+              {isError}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 export default Cards;

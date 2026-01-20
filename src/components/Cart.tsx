@@ -24,9 +24,9 @@ const Cart = () => {
     if (users === null) {
       navigate("/login");
     }
-  }, [users]);
+  }, [navigate, users]);
   return (
-    <>
+    <div className="bodyCart">
       <h2>Cart</h2>
       <h1 className="suma">Sum: {suma}$</h1>
       <div className="containerCart">
@@ -53,7 +53,7 @@ const Cart = () => {
         })}
       </div>
       <button>deliver</button>
-    </>
+    </div>
   );
 };
 export default Cart;

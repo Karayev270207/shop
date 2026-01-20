@@ -6,6 +6,7 @@ const Login = () => {
   const surnameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const login = InputCreate((state) => state.login);
+  const loading = InputCreate((state) => state.loading);
   const [values, setValues] = useState<TypeUser | null>(null);
   const submit = () => {
     setValues({
@@ -22,6 +23,7 @@ const Login = () => {
 
   return (
     <>
+      {loading && <h1>Loading...</h1>}
       <div className="continput">
         <div className="boxinput">
           <input
@@ -46,11 +48,6 @@ const Login = () => {
             submit
           </button>
         </div>
-      </div>
-      <div style={{ width: 120, height: 120 }} className="box2">
-        <div style={{ fontSize: "30px" }}>{values?.name}</div>
-        <div style={{ fontSize: "30px" }}>{values?.surname}</div>
-        <div style={{ fontSize: "30px" }}>{values?.phone}</div>
       </div>
     </>
   );

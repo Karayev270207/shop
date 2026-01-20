@@ -1,0 +1,31 @@
+body {
+  background: linear-gradient(270deg, #6a0dad,#ff69b4, #9b30ff, #6a0dad);
+  background-size: 800% 800%;
+  background-attachment: fixed;
+  height: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-bottom: 80px;
+}
+.boxNav {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  gap: 1px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 3px;
+  z-index: 1;
+}
+.isactive {
+  font-size: 26px;
+  color: white;
+  background-color: purple;
+}
+.notactive {
+  font-size: 29px;
+  color: white;
+  background-color: rgb(241, 19, 142);
+}

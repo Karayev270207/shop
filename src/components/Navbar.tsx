@@ -1,21 +1,28 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { InputCreate} from "../context/loginContext";
-import "./Cards.module.css";
+import { InputCreate } from "../context/loginContext";
+import "./Navbar.css";
 import { useEffect, useState } from "react";
 import { apiCreateEffect } from "../context/apiContext";
+import home from "../icons/home.png";
+import list from "../icons/list.png";
+import shop from "../icons/shopping-cart_3916627.png";
+import logoutPNG from "../icons/exit.png";
+import loginPNG from "../icons/user_3917711.png";
+import addPost from "../icons/add.png";
 
 const Navbar = () => {
   const cart = apiCreateEffect((state) => state.cart);
   const [len, setLen] = useState<string>("");
-  // zustand states 
-  const users = InputCreate((state)=>state.users);
-  const logout = InputCreate((state)=>state.logout);
+  // zustand states
+  const users = InputCreate((state) => state.users);
+  const logout = InputCreate((state) => state.logout);
+  const loading = InputCreate((state) => state.loading);
   const navigate = useNavigate();
   useEffect(() => {
-    if (users) {
+    if (users && !loading) {
       navigate("/");
     }
-  }, [users]);
+  }, [users, loading]);
 
   useEffect(() => {
     const cartLen = cart.length;
@@ -30,20 +37,29 @@ const Navbar = () => {
           className={({ isActive }) => (isActive ? "isactive" : "notactive")}
           to={"/"}
         >
-          Home
+          <img src={home} width={45} alt="" />
         </NavLink>
+        {users !== null && (
+          <NavLink
+            className={({ isActive }) => (isActive ? "isactive" : "notactive")}
+            to={"/post"}
+          >
+            <img src={addPost} width={45} alt="" />
+          </NavLink>
+        )}
         <NavLink
           className={({ isActive }) => (isActive ? "isactive" : "notactive")}
           to={"/cards"}
         >
-          Cards
+          <img src={list} width={45} alt="" />
         </NavLink>
         {users !== null && (
           <NavLink
             className={({ isActive }) => (isActive ? "isactive" : "notactive")}
             to={"/cart"}
           >
-            Cart {len}
+            <img src={shop} alt="" width={45} />
+            {len}
           </NavLink>
         )}
         <>
@@ -55,7 +71,7 @@ const Navbar = () => {
                 navigate("/login");
               }}
             >
-              logout
+              <img src={logoutPNG} width={45} alt="" />
             </button>
           ) : (
             <NavLink
@@ -64,7 +80,7 @@ const Navbar = () => {
               }
               to={"/login"}
             >
-              Login
+              <img src={loginPNG} width={45} alt="" />
             </NavLink>
           )}
         </>
